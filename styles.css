@@ -162,9 +162,12 @@ body {
 }
 
 .prompt img {
-  width: min(70vw, 280px);
-  height: auto;
-  filter: drop-shadow(0 12px 22px rgba(0, 0, 0, 0.4));
+    width: min(70vw, 60px);
+    height: auto;
+    filter: drop-shadow(0 12px 22px rgba(0, 0, 0, 0.4));
+    top: 130px;
+    position: relative;
+    opacity: 0.42;
 }
 
 .media {
