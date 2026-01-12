@@ -200,11 +200,11 @@ body {
   @keyframes play-pulse1 {
   0%,
   100% {
-    transform: translate(0%, -30%) scale(1); 
+    transform: translate(0%, -6%) scale(1); 
   }
   
   50% {
-    transform: translate(0%, -50%) scale(1.06);
+    transform: translate(0%, -11%) scale(1.13);
   }
 
   
