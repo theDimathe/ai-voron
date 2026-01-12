@@ -1,0 +1,33 @@
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background: #000;
+}
+
+.page {
+  height: 100vh;
+  width: 100vw;
+  overflow: hidden;
+}
+
+.media {
+  display: block;
+  height: 100%;
+  width: 100%;
+}
+
+.media-image {
+  display: block;
+  height: 100%;
+  width: 100%;
+  object-fit: cover;
+}
