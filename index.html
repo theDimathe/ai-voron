@@ -1,0 +1,39 @@
+<!doctype html>
+<html lang="ru">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>AI Voron</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div class="background" aria-hidden="true"></div>
+    <main class="page">
+      <div class="loader" aria-hidden="true">
+        <svg class="loader-svg" viewBox="0 0 120 120" aria-hidden="true">
+          <defs>
+            <linearGradient id="loader-gradient" x1="0" y1="0" x2="1" y2="1">
+              <stop offset="0%" stop-color="#2b8fd8" />
+              <stop offset="55%" stop-color="#7ad0ff" />
+              <stop offset="100%" stop-color="#f5c542" />
+            </linearGradient>
+          </defs>
+          <circle class="loader-track" cx="60" cy="60" r="46" />
+          <circle class="loader-ring" cx="60" cy="60" r="46" />
+        </svg>
+      </div>
+      <button class="prompt" type="button" aria-label="Нажмите для продолжения">
+        <img src="source/tap.webp" alt="Кликните по экрану" />
+      </button>
+      <video
+        class="media"
+        preload="auto"
+        playsinline
+        webkit-playsinline
+      >
+        <source src="source/video.mp4" type="video/mp4" />
+      </video>
+    </main>
+    <script src="script.js"></script>
+  </body>
+</html>
