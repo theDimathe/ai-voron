@@ -67,13 +67,13 @@ body {
 .progress-track {
   fill: none;
   stroke: rgba(255, 255, 255, 0.18);
-  stroke-width: 10;
+  stroke-width: 6;
 }
 
 .progress-bar {
   fill: none;
   stroke: url(#progress-gradient);
-  stroke-width: 10;
+  stroke-width: 6;
   stroke-linecap: round;
   stroke-dasharray: 352;
   stroke-dashoffset: 352;
@@ -87,21 +87,24 @@ body {
 }
 
 .progress-value {
-  font-size: 40px;
-  letter-spacing: 2px;
+  font-size: 32px;
+  font-weight: 300;
+  letter-spacing: 1px;
 }
 
 .progress-label {
-  font-size: 14px;
-  letter-spacing: 3px;
+  margin-top: 14px;
+  font-size: 12px;
+  font-weight: 300;
+  letter-spacing: 2px;
   text-transform: uppercase;
   opacity: 0.7;
 }
 
 .play-button {
   position: absolute;
-  width: 74px;
-  height: 74px;
+  width: 60px;
+  height: 60px;
   border-radius: 50%;
   border: none;
   background: radial-gradient(circle at 30% 30%, #7ad0ff, #2b8fd8);
@@ -117,10 +120,10 @@ body {
 .play-button .play-icon {
   width: 0;
   height: 0;
-  border-top: 12px solid transparent;
-  border-bottom: 12px solid transparent;
-  border-left: 20px solid #fff;
-  margin-left: 4px;
+  border-top: 9px solid transparent;
+  border-bottom: 9px solid transparent;
+  border-left: 15px solid #fff;
+  margin-left: 3px;
 }
 
 .loader.loaded .play-button {
