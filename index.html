@@ -7,15 +7,22 @@
     <link rel="stylesheet" href="styles.css" />
   </head>
   <body>
+    <div class="background" aria-hidden="true"></div>
     <main class="page">
-      <picture class="media">
-        <source srcset="source/mobile.webp" media="(max-width: 768px)" />
-        <img
-          src="source/desktop.webp"
-          alt="Animated full screen"
-          class="media-image"
-        />
-      </picture>
+      <div class="loader" aria-hidden="true">
+        <span class="loader-ring"></span>
+      </div>
+      <button class="prompt" type="button" aria-label="Нажмите для продолжения">
+        <img src="source/tap.webp" alt="Кликните по экрану" />
+      </button>
+      <video
+        class="media"
+        preload="auto"
+        playsinline
+        webkit-playsinline
+      >
+        <source src="source/video.mp4" type="video/mp4" />
+      </video>
     </main>
     <script src="script.js"></script>
   </body>

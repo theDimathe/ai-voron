@@ -1,4 +1,4 @@
-const ANIMATION_DURATION_MS = 6700;
+const LOADER_DURATION_MS = 1300;
 
 function redirectToOffer() {
   const params = new URLSearchParams(window.location.search);
@@ -8,34 +8,31 @@ function redirectToOffer() {
   if (!r) return;
 
   const path = r.startsWith("/") ? r : `/${r}`;
-  const targetUrl = `https://${d}${path}`;
-
-  window.location.href = targetUrl;
+  window.location.href = `https://${d}${path}`;
 }
 
-function playMobileAudio() {
-  const audioFiles = [
-    "source/audio-1.mp3",
-    "source/audio-2.mp3",
-    "source/audio-3.mp3",
-  ];
+function setupFlow() {
+  const loader = document.querySelector(".loader");
+  const prompt = document.querySelector(".prompt");
+  const video = document.querySelector(".media");
 
-  audioFiles.forEach((file) => {
-    const audio = new Audio(file);
-    audio.play().catch(() => {});
+  if (!loader || !prompt || !video) return;
+
+  window.setTimeout(() => {
+    loader.classList.add("hidden");
+    prompt.classList.add("visible");
+  }, LOADER_DURATION_MS);
+
+  prompt.addEventListener("click", () => {
+    prompt.classList.remove("visible");
+    video.classList.add("active");
+    video.currentTime = 0;
+    video.play().catch(() => {});
+  });
+
+  video.addEventListener("ended", () => {
+    redirectToOffer();
   });
 }
 
-function isMobileDevice() {
-  return window.matchMedia("(max-width: 768px)").matches;
-}
-
-window.addEventListener("load", () => {
-  if (isMobileDevice()) {
-    playMobileAudio();
-  }
-
-  window.setTimeout(() => {
-    redirectToOffer();
-  }, ANIMATION_DURATION_MS);
-});
+window.addEventListener("load", setupFlow);
