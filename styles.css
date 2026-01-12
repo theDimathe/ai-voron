@@ -196,7 +196,7 @@ body {
     transform: translate(-50%, -50%) scale(1.06);
     box-shadow: 0 0 34px rgba(122, 208, 255, 0.75);
   }
-
+}
   @keyframes play-pulse1 {
   0%,
   100% {
