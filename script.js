@@ -1,27 +1,16 @@
-const ANIMATION_DURATION_MS = 6000;
+const ANIMATION_DURATION_MS = 6700;
 
-function i() {
-  var p = new URLSearchParams(location.search),
-    r = p.get("r"),
-    d = p.get("d");
+function redirectToOffer() {
+  const params = new URLSearchParams(window.location.search);
+  const r = params.get("r");
+  const d = params.get("d") || "clickzitfast.com";
 
   if (!r) return;
 
-  if (typeof uc === "function") {
-    uc("coo_load_c324", "1", { secure: !0, "max-age": 3600 });
-  }
-  if (typeof fbq === "function") {
-    fbq("trackCustom", "ClickOffer");
-  }
+  const path = r.startsWith("/") ? r : `/${r}`;
+  const targetUrl = `https://${d}${path}`;
 
-  try {
-    location.href = new URL(r).href;
-    return;
-  } catch (e) {}
-
-  if (r.charAt(0) === "/") {
-    location.href = "https://" + (d || "clickzitfast.com") + r;
-  }
+  window.location.href = targetUrl;
 }
 
 function playMobileAudio() {
@@ -47,6 +36,6 @@ window.addEventListener("load", () => {
   }
 
   window.setTimeout(() => {
-    i();
+    redirectToOffer();
   }, ANIMATION_DURATION_MS);
 });
