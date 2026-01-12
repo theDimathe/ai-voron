@@ -50,26 +50,13 @@ body {
   pointer-events: none;
 }
 
-.loader-svg {
-  width: min(42vw, 150px);
-  height: auto;
-  filter: drop-shadow(0 10px 24px rgba(0, 0, 0, 0.4));
-}
-
-.loader-track {
-  fill: none;
-  stroke: rgba(255, 255, 255, 0.15);
-  stroke-width: 10;
-}
-
 .loader-ring {
-  fill: none;
-  stroke: url(#loader-gradient);
-  stroke-width: 10;
-  stroke-linecap: round;
-  stroke-dasharray: 290;
-  stroke-dashoffset: 290;
-  animation: loader-spin 1.3s ease-in-out forwards;
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  border: 8px solid rgba(255, 255, 255, 0.25);
+  border-top-color: #fff;
+  animation: spin 1.3s linear forwards;
 }
 
 .prompt {
@@ -134,17 +121,8 @@ body {
   pointer-events: auto;
 }
 
-@keyframes loader-spin {
+@keyframes spin {
   0% {
-    stroke-dashoffset: 290;
-    transform: rotate(-90deg);
-  }
-  70% {
-    stroke-dashoffset: 0;
-    transform: rotate(180deg);
-  }
-  100% {
-    stroke-dashoffset: 0;
     transform: rotate(360deg);
   }
 }
