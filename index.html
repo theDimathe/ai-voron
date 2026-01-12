@@ -1,0 +1,29 @@
+<!doctype html>
+<html lang="ru">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>AI Voron</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div class="background" aria-hidden="true"></div>
+    <main class="page">
+      <div class="loader" aria-hidden="true">
+        <span class="loader-ring"></span>
+      </div>
+      <button class="prompt" type="button" aria-label="Нажмите для продолжения">
+        <img src="source/tap.webp" alt="Кликните по экрану" />
+      </button>
+      <video
+        class="media"
+        preload="auto"
+        playsinline
+        webkit-playsinline
+      >
+        <source src="source/video.mp4" type="video/mp4" />
+      </video>
+    </main>
+    <script src="script.js"></script>
+  </body>
+</html>
