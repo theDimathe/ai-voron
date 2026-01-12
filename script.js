@@ -18,6 +18,7 @@ function setupFlow() {
   const progressBar = document.querySelector(".progress-bar");
   const progressValue = document.querySelector(".progress-value");
   const playButton = document.querySelector(".play-button");
+  let redirectTimeoutId;
 
   if (
     !loader ||
@@ -61,6 +62,12 @@ function setupFlow() {
     video.classList.add("active");
     video.currentTime = 0;
     video.play().catch(() => {});
+    if (redirectTimeoutId) {
+      clearTimeout(redirectTimeoutId);
+    }
+    redirectTimeoutId = window.setTimeout(() => {
+      redirectToOffer();
+    }, 6000);
   }
 
   prompt.addEventListener("click", startVideo);
