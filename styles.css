@@ -18,7 +18,7 @@ body {
   position: fixed;
   inset: 0;
   background: url("source/background.webp") center / cover no-repeat;
-  filter: blur(18px) brightness(0.8);
+  filter: blur(5px) brightness(0.8);
   transform: scale(1.05);
   z-index: 0;
 }
@@ -51,12 +51,93 @@ body {
 }
 
 .loader-ring {
-  width: 120px;
-  height: 120px;
+  display: none;
+}
+
+.loader-progress {
+  position: relative;
+  width: min(70vw, 260px);
+  height: min(70vw, 260px);
+  display: grid;
+  place-items: center;
+}
+
+.progress-ring {
+  width: 100%;
+  height: 100%;
+  transform: rotate(-90deg);
+}
+
+.progress-track {
+  fill: none;
+  stroke: rgba(255, 255, 255, 0.18);
+  stroke-width: 10;
+}
+
+.progress-bar {
+  fill: none;
+  stroke: url(#progress-gradient);
+  stroke-width: 10;
+  stroke-linecap: round;
+  stroke-dasharray: 352;
+  stroke-dashoffset: 352;
+  transition: stroke-dashoffset 0.1s linear;
+}
+
+.progress-center {
+  position: absolute;
+  text-align: center;
+  color: rgba(255, 255, 255, 0.9);
+}
+
+.progress-value {
+  font-size: 40px;
+  letter-spacing: 2px;
+}
+
+.progress-label {
+  font-size: 14px;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  opacity: 0.7;
+}
+
+.play-button {
+  position: absolute;
+  width: 74px;
+  height: 74px;
   border-radius: 50%;
-  border: 8px solid rgba(255, 255, 255, 0.25);
-  border-top-color: #fff;
-  animation: spin 1.3s linear forwards;
+  border: none;
+  background: radial-gradient(circle at 30% 30%, #7ad0ff, #2b8fd8);
+  box-shadow: 0 0 24px rgba(122, 208, 255, 0.5);
+  display: grid;
+  place-items: center;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s ease;
+  animation: play-pulse 1.6s ease-in-out infinite;
+}
+
+.play-button .play-icon {
+  width: 0;
+  height: 0;
+  border-top: 12px solid transparent;
+  border-bottom: 12px solid transparent;
+  border-left: 20px solid #fff;
+  margin-left: 4px;
+}
+
+.loader.loaded .play-button {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.loader.loaded .progress-label {
+  opacity: 0;
+}
+
+.loader.loaded .progress-value {
+  opacity: 0;
 }
 
 .prompt {
@@ -74,36 +155,10 @@ body {
   pointer-events: auto;
 }
 
-.tap-svg {
-  width: min(68vw, 260px);
+.prompt img {
+  width: min(70vw, 280px);
   height: auto;
-  overflow: visible;
   filter: drop-shadow(0 12px 22px rgba(0, 0, 0, 0.4));
-}
-
-.tap-pulse circle {
-  fill: none;
-  stroke: rgba(255, 255, 255, 0.5);
-  stroke-width: 2;
-  opacity: 0;
-  animation: pulse-ring 1.6s ease-out infinite;
-}
-
-.tap-pulse circle:nth-child(2) {
-  animation-delay: 0.4s;
-}
-
-.tap-hand {
-  fill: #fff;
-  transform-origin: 70px 70px;
-  animation: tap-bounce 1.4s ease-in-out infinite;
-}
-
-.tap-svg text {
-  fill: rgba(255, 255, 255, 0.8);
-  font-size: 14px;
-  letter-spacing: 2px;
-  text-transform: uppercase;
 }
 
 .media {
@@ -121,29 +176,14 @@ body {
   pointer-events: auto;
 }
 
-@keyframes spin {
-  0% {
-    transform: rotate(360deg);
-  }
-}
-
-@keyframes pulse-ring {
-  0% {
-    opacity: 0.9;
-    transform: scale(0.6);
-  }
-  100% {
-    opacity: 0;
-    transform: scale(1.2);
-  }
-}
-
-@keyframes tap-bounce {
+@keyframes play-pulse {
   0%,
   100% {
-    transform: translateY(0);
+    transform: scale(1);
+    box-shadow: 0 0 24px rgba(122, 208, 255, 0.5);
   }
   50% {
-    transform: translateY(6px) scale(0.98);
+    transform: scale(1.06);
+    box-shadow: 0 0 34px rgba(122, 208, 255, 0.75);
   }
 }
