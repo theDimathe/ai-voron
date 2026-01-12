@@ -103,6 +103,9 @@ body {
 
 .play-button {
   position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
   width: 60px;
   height: 60px;
   border-radius: 50%;
@@ -178,11 +181,11 @@ body {
 @keyframes play-pulse {
   0%,
   100% {
-    transform: scale(1);
+    transform: translate(-50%, -50%) scale(1);
     box-shadow: 0 0 24px rgba(122, 208, 255, 0.5);
   }
   50% {
-    transform: scale(1.06);
+    transform: translate(-50%, -50%) scale(1.06);
     box-shadow: 0 0 34px rgba(122, 208, 255, 0.75);
   }
 }
