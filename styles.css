@@ -168,6 +168,7 @@ body {
     top: 130px;
     position: relative;
     opacity: 0.42;
+    animation: play-pulse-h 1.6s ease-in-out infinite;
 }
 
 .media {
@@ -195,4 +196,17 @@ body {
     transform: translate(-50%, -50%) scale(1.06);
     box-shadow: 0 0 34px rgba(122, 208, 255, 0.75);
   }
+
+  @keyframes play-pulse-h {
+  0%,
+  100% {
+    transform: translate(0%, -30%) scale(1);
+    
+  }
+  50% {
+    transform: translate(0%, -50%) scale(1.06);
+   
+  }
+
+  
 }
