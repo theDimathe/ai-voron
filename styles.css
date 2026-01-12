@@ -50,94 +50,26 @@ body {
   pointer-events: none;
 }
 
-.loader-ring {
-  display: none;
+.loader-svg {
+  width: min(42vw, 150px);
+  height: auto;
+  filter: drop-shadow(0 10px 24px rgba(0, 0, 0, 0.4));
 }
 
-.loader-progress {
-  position: relative;
-  width: min(70vw, 260px);
-  height: min(70vw, 260px);
-  display: grid;
-  place-items: center;
-}
-
-.progress-ring {
-  width: 100%;
-  height: 100%;
-  transform: rotate(-90deg);
-}
-
-.progress-track {
+.loader-track {
   fill: none;
   stroke: rgba(255, 255, 255, 0.18);
   stroke-width: 10;
 }
 
-.progress-bar {
+.loader-ring {
   fill: none;
-  stroke: url(#progress-gradient);
+  stroke: url(#loader-gradient);
   stroke-width: 10;
   stroke-linecap: round;
-  stroke-dasharray: 352;
-  stroke-dashoffset: 352;
-  transition: stroke-dashoffset 0.1s linear;
-}
-
-.progress-center {
-  position: absolute;
-  text-align: center;
-  color: rgba(255, 255, 255, 0.9);
-}
-
-.progress-value {
-  font-size: 40px;
-  letter-spacing: 2px;
-}
-
-.progress-label {
-  font-size: 14px;
-  letter-spacing: 3px;
-  text-transform: uppercase;
-  opacity: 0.7;
-}
-
-.play-button {
-  position: absolute;
-  width: 74px;
-  height: 74px;
-  border-radius: 50%;
-  border: none;
-  background: radial-gradient(circle at 30% 30%, #7ad0ff, #2b8fd8);
-  box-shadow: 0 0 24px rgba(122, 208, 255, 0.5);
-  display: grid;
-  place-items: center;
-  opacity: 0;
-  pointer-events: none;
-  transition: opacity 0.3s ease;
-  animation: play-pulse 1.6s ease-in-out infinite;
-}
-
-.play-button .play-icon {
-  width: 0;
-  height: 0;
-  border-top: 12px solid transparent;
-  border-bottom: 12px solid transparent;
-  border-left: 20px solid #fff;
-  margin-left: 4px;
-}
-
-.loader.loaded .play-button {
-  opacity: 1;
-  pointer-events: auto;
-}
-
-.loader.loaded .progress-label {
-  opacity: 0;
-}
-
-.loader.loaded .progress-value {
-  opacity: 0;
+  stroke-dasharray: 290;
+  stroke-dashoffset: 290;
+  animation: loader-spin 1.3s ease-in-out forwards;
 }
 
 .prompt {
@@ -176,14 +108,17 @@ body {
   pointer-events: auto;
 }
 
-@keyframes play-pulse {
-  0%,
-  100% {
-    transform: scale(1);
-    box-shadow: 0 0 24px rgba(122, 208, 255, 0.5);
+@keyframes loader-spin {
+  0% {
+    stroke-dashoffset: 290;
+    transform: rotate(-90deg);
   }
-  50% {
-    transform: scale(1.06);
-    box-shadow: 0 0 34px rgba(122, 208, 255, 0.75);
+  70% {
+    stroke-dashoffset: 0;
+    transform: rotate(180deg);
+  }
+  100% {
+    stroke-dashoffset: 0;
+    transform: rotate(360deg);
   }
 }
