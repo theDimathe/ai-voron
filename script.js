@@ -25,12 +25,7 @@ function setupFlow() {
     return;
   }
 
-  function startVideo() {
-    prompt.classList.remove("visible");
-    loader.classList.add("hidden");
-    video.classList.add("active");
-    video.currentTime = 0;
-    video.play().catch(() => {});
+  function scheduleRedirect() {
     if (redirectTimeoutId) {
       clearTimeout(redirectTimeoutId);
     }
@@ -39,9 +34,25 @@ function setupFlow() {
     }, 6000);
   }
 
+  function startVideo() {
+    prompt.classList.remove("visible");
+    loader.classList.add("hidden");
+    video.classList.add("active");
+    video.currentTime = 0;
+    const playPromise = video.play();
+    if (playPromise && typeof playPromise.then === "function") {
+      playPromise.then(scheduleRedirect).catch(() => {
+        prompt.classList.add("visible");
+      });
+    } else {
+      scheduleRedirect();
+    }
+  }
+
   prompt.addEventListener("click", startVideo);
   playButton.addEventListener("click", startVideo);
 
+  video.addEventListener("play", scheduleRedirect);
   video.addEventListener("ended", () => {
     redirectToOffer();
   });
@@ -49,4 +60,4 @@ function setupFlow() {
   startVideo();
 }
 
-window.addEventListener("load", setupFlow);
+window.addEventListener("DOMContentLoaded", setupFlow);
